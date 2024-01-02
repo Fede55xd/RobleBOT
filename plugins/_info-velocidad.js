@@ -122,7 +122,7 @@ let handler = async (m, { conn, usedPrefix, command, isRowner }) => {
 *${htjava}* 𝙏𝙄𝙀𝙈𝙋𝙊 𝘿𝙀 𝙀𝙅𝙀𝘾𝙐𝘾𝙄𝙊𝙉
 ${muptime}
 
-_Servidor:_ *INICIO:* 🏚️
+_Servidor:_ *STICKERS:* 🏚️
 _Estado:_ *Online* 🟩
 `;
     await conn.reply(m.chat, caption, fkontak);
