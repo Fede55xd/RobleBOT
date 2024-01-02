@@ -139,7 +139,7 @@ _Estado:_ *Online* 🟩
 };
 handler.help = ["ping", "speed"];
 handler.tags = ["info", "tools"];
-handler.command = /^(ping)$/i;
+handler.command = /^(ping4)$/i;
 export default handler;
 
 const more = String.fromCharCode(8206);
