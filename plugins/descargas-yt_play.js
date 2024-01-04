@@ -101,7 +101,7 @@ renderLargerThumbnail: true
 }  
 if (command == 'play2') {
 try {
-let qu = '144'
+let qu = '360'
 let q = qu + 'p'
 let v = yt_play[0].url
 const yt = await youtubedl(v).catch(async _ => await youtubedlv2(v))
