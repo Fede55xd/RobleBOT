@@ -122,7 +122,7 @@ let handler = async (m, { conn, usedPrefix, command, isRowner }) => {
 *${htjava}* 𝙏𝙄𝙀𝙈𝙋𝙊 𝘿𝙀 𝙀𝙅𝙀𝘾𝙐𝘾𝙄𝙊𝙉
 ${muptime}
 
-_Servidor:_ *STICKERS:* 🏚️
+_Servidor:_ *INICIO:* 🏚️
 _Estado:_ *Online* 🟩
 `;
     await conn.reply(m.chat, caption, fkontak);
@@ -139,7 +139,7 @@ _Estado:_ *Online* 🟩
 };
 handler.help = ["ping", "speed"];
 handler.tags = ["info", "tools"];
-handler.command = /^(ping4)$/i;
+handler.command = /^(ping)$/i;
 export default handler;
 
 const more = String.fromCharCode(8206);
