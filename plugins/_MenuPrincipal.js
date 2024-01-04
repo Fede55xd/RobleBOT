@@ -40,8 +40,8 @@ ${readMore}
 *――――――――――――――――――――――*
 ⚙️ _Herramientas_ 🛠️
 *Comandos:* 👇
-→ _${usedPrefix}hd 💪
-→ _${usedPrefix}iguser_ *Usuario sin @*
+→ _${usedPrefix}hd 💪_
+→ _${usedPrefix}iguser_ *Usuario sin @* 📸
 → _${usedPrefix}todos_ *texto* 📢 (Solo Para Admins)
 → _${usedPrefix}hidetag_ *texto* 🔊 (Solo Para Admins)
 → _${usedPrefix}ia_ *texto* 🤖 (ChatGPT)
