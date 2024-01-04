@@ -17,7 +17,7 @@ const yt_play = await search(args.join(" "))
 let additionalText = ''
 if (command === 'play') {
 additionalText = '🔊'
-} else if (command === 'play2') {
+} else if (command === 'kvideo') {
 additionalText = '🎥'}
 let captionvid = `✅ ÉXITO. El archivo de ${additionalText} se está enviando...`
 await conn.sendMessage(m.chat, {
@@ -99,7 +99,7 @@ renderLargerThumbnail: true
 } catch {
 }}}}}
 }  
-if (command == 'play2') {
+if (command == 'kvideo') {
 try {
 let qu = '360'
 let q = qu + 'p'
@@ -127,7 +127,7 @@ await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimet
 }} catch {
 handler.limit = 0
 }}
-handler.command = ['play', 'play2']
+handler.command = ['play', 'kvideo']
 export default handler
 
 async function search(query, options = {}) {
