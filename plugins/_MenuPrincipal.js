@@ -11,9 +11,8 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 *Link:* https://bit.ly/ig-robleuy
 📱 *Número:* wa.me/+59893900470
 
-*Menú de Respaldo → _${usedPrefix} _menu2*     
-_Algunos comandos no estan disponibles en el menú2!_
-*El menú 2 es para en caso de que no funcionen los comandos.*
+*Menú de Respaldo → ${usedPrefix}menu2*     
+*Usar en caso de que el bot no funcione.*
 
 *Lista de Comandos Disponibles:*
   👇👇👇
