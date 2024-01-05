@@ -11,6 +11,9 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 *Link:* https://bit.ly/ig-robleuy
 📱 *Número:* wa.me/+59893900470
 
+*Menú de Respaldo → _${usedPrefix} _menu2*     
+_Algunos comandos no estan disponibles en el menú2!_
+*El menú 2 es para en caso de que no funcionen los comandos.*
 
 *Lista de Comandos Disponibles:*
   👇👇👇
