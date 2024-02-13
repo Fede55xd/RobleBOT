@@ -1,7 +1,7 @@
 let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender];
 
-    // Asegurarse de que las variables estén definidas y sean números
+
     user.successfulCrimes = user.successfulCrimes ? user.successfulCrimes : 0;
     user.failedCrimes = user.failedCrimes ? user.failedCrimes : 0;
 
@@ -18,21 +18,7 @@ let handler = async (m, { conn }) => {
         user.money += moneyStolen;
         user.lastCrime = new Date();
         user.successfulCrimes += 1;
-        let crimeMessage = `
-🕵️‍♂️ *HAS COMETIDO UN CRIMEN* 🕵️‍♂️
-
-🗣 *Información sobre el crimen:*
-*${getCrimeDetails()}*
-
-🤑 *GANASTE:*
-*${moneyStolen} ROBLECOINS* 🤑
-
-💰 *BALANCE ACTUALIZADO:*
-*${user.money} ROBLECOINS*
-
-✅ *Crímenes Exitosos: ${user.successfulCrimes}*
-❌ *Crímenes Fallidos: ${user.failedCrimes}*
-        `;
+        let crimeMessage = `*${getCrimeDetails()} y conseguiste: ${moneyStolen} ROBLECOINS 🤑, ahora tienes: ${user.money}*`;
         return m.reply(crimeMessage, null, { contextInfo: null });
     } else {
         let chance = Math.random();
@@ -40,44 +26,14 @@ let handler = async (m, { conn }) => {
             user.money += moneyStolen;
             user.lastCrime = new Date();
             user.successfulCrimes += 1;
-            let successMessage = `
-🕵️‍♂️ *HAS COMETIDO UN CRIMEN* 🕵️‍♂️
-
-🗣 *Información sobre el crimen:*
-*${getCrimeDetails()}*
-
-🤑 *GANASTE:*
-*${moneyStolen} ROBLECOINS* 🤑
-
-💰 *BALANCE ACTUALIZADO:*
-*${user.money} ROBLECOINS*
-
-✅ *Crímenes Exitosos: ${user.successfulCrimes} 
-❌ *Crímenes Fallidos: ${user.failedCrimes}*
-            `;
+            let successMessage = `*${getCrimeDetails()} y conseguiste: ${moneyStolen} ROBLECOINS 🤑, ahora tienes ${user.money}*`;
             return m.reply(successMessage, null, { contextInfo: null });
         } else {
             let stolenMoney = Math.floor(Math.random() * 501) + 1500;
             user.money -= stolenMoney;
             user.lastCrime = new Date();
             user.failedCrimes += 1;
-            let failureMessage = `
-🚨 *HAS SIDO CAPTURADO POR LA POLICÍA* 🚨
-
-🗣 *Información sobre el crimen:*
-*${getCrimeDetails()}*
-
-🤕 *PERDISTE:*
-*${stolenMoney} ROBLECOINS* 🤕
-
-💰 *BALANCE ACTUALIZADO:*
-*${user.money} ROBLECOINS*
-
-*✅ Crímenes Exitosos: ${user.successfulCrimes}*
-*❌ Crímenes Fallidos: ${user.failedCrimes}*
-
-👮 *La policía te atrapó, ¡ten más cuidado la próxima vez!* 👮
-            `;
+            let failureMessage = `*${getCrimeDetails()} pero fuiste atrapado por la policia y tuviste que pagaar una fianza de: ${stolenMoney} ROBLECOINS* 🤕`;
             return m.reply(failureMessage, null, { contextInfo: null });
         }
     }
