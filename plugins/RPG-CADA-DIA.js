@@ -1,4 +1,3 @@
-// En el archivo que contiene el plugin de trabajos (puedes renombrarlo según tu estructura)
 let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender];
 
@@ -15,13 +14,7 @@ let handler = async (m, { conn }) => {
     user.lastCadadia = currentTime;
     user.cadadiaCount = user.cadadiaCount ? user.cadadiaCount + 1 : 1; // Contador de veces utilizadas
 
-    let cadadiaMessage = `
-*💰 HAS OBTENIDO 100000 DE ROBLECOINS AL USAR "CADA DÍA" 💰*
-
-*💰 BALANCE ACTUALIZADO:*\n*${user.money} ROBLECOINS*
-
-*ℹ️ Veces utilizadas: ${user.cadadiaCount}*\n*⏰ Puedes usar "cadadia" nuevamente en 24 horas*
-`;
+    let cadadiaMessage = `*💰 Has reclamado tu beneficio de 100000 RobleCoins al dia por ser parte de RobleBOT 💰*`;
 
     return m.reply(cadadiaMessage, null, { contextInfo: null });
 }
