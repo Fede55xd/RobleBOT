@@ -2,7 +2,7 @@ let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender];
 
     let currentTime = new Date();
-    let timeDiff = currentTime - user.lastCadadia;
+    let timeDiff = currentTime - user.lastCadahora;
     let waitTime = 3600000; 
 
     if (timeDiff < waitTime) {
