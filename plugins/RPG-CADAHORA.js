@@ -2,24 +2,40 @@ let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender];
 
     let currentTime = new Date();
-    let timeDiff = currentTime - user.lastCadahora;
-    let waitTime = 3600000; // 1 hora en milisegundos
+    let timeDiff = currentTime - user.lastCadadia;
+    let waitTime = 3600000; 
 
-    if (timeDiff < waitTime)
-        return m.reply(`*⏰ DEBES ESPERAR ${Math.ceil((waitTime - timeDiff) / 1000)} SEGUNDOS ANTES DE USAR "CADAHORA" NUEVAMENTE.*\n*ℹ️ Veces utilizadas: ${user.cadahoraCount}*`, null, { contextInfo: null });
+    if (timeDiff < waitTime) {
+        let remainingTime = waitTime - timeDiff;
+        let hours = Math.floor(remainingTime / 3600000);
+        let minutes = Math.floor((remainingTime % 3600000) / 60000);
+        let seconds = Math.floor((remainingTime % 60000) / 1000);
 
-    let coinsClaimed = 30000;
+        let timeMessage = "";
+
+        if (hours > 0) {
+            timeMessage += `${hours} ${hours === 1 ? 'hora' : 'horas'}`;
+            if (minutes > 0) timeMessage += ` y ${minutes} ${minutes === 1 ? 'minuto' : 'minutos'}`;
+        } else if (minutes > 0) {
+            timeMessage += `${minutes} ${minutes === 1 ? 'minuto' : 'minutos'}`;
+            if (seconds > 0) timeMessage += ` y ${seconds} ${seconds === 1 ? 'segundo' : 'segundos'}`;
+        }
+
+        return m.reply(`*⏰ Debes esperar: ${timeMessage} para reclamar esta recompensa nuevamente.*`, null, { contextInfo: null });
+    }
+
+    let coinsClaimed = 30000; 
 
     user.money += coinsClaimed;
-    user.lastCadahora = currentTime;
-    user.cadahoraCount = user.cadahoraCount ? user.cadahoraCount + 1 : 1; // Contador de veces utilizadas
+    user.lastCadadia = currentTime;
+    user.cadadiaCount = user.cadadiaCount ? user.cadadiaCount + 1 : 1; 
 
-    let cadahoraMessage = `*💰 Has reclamado tu beneficio de 30000 RobleCoins por hora por ser parte de RobleBOT 💰*`;
+    let cadadiaMessage = `*💰 Has reclamado tu beneficio de 30000 RobleCoins por hora por ser parte de RobleBOT 💰*`;
 
-    return m.reply(cadahoraMessage, null, { contextInfo: null });
+    return m.reply(cadadiaMessage, null, { contextInfo: null });
 }
 
 handler.help = ['cadahora'];
 handler.tags = ['economy'];
-handler.command = /^cadahora$/i;
+handler.command = /^cadahora/i;
 export default handler;
