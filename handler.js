@@ -119,7 +119,7 @@ if (!isNumber(user.monolastfeed))user.monolastfeed = 0
 if (!isNumber(user.gatoalimentado)) user.gatoalimentado = 0
 if (!isNumber(user.mononivel)) user.mononivel = 1
 if (!isNumber(user.monoalimentado)) user.monoalimentado = 0
-if (!isNumber(user.money)) user.money = 100
+if (!isNumber(user.money)) user.money = 1000
 if (!isNumber(user.limit)) user.limit = 15000 	      
 if (!('registered' in user)) user.registered = false
 if (!('registroR' in user)) user.registroR = false
@@ -863,7 +863,7 @@ makananserigala: 0,
 mana: 0,
 mangga: 0,
 misi: '',
-money: 100,
+money: 1000,
 monyet: 0,
 mythic: 0,
 naga: 0,
@@ -1237,10 +1237,10 @@ if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner
 if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned && !isROwner) return 
 if (m.text && user.banned && !isROwner) {
 if (user.antispam > 2) return
-m.reply(`🚫 *ESTÁ BANEADO(A), NO PUEDE USAR COMANDOS*\n
-📑 *MOTIVO: ${user.messageSpam === 0 ? 'NO ESPECIFICADO' : user.messageSpam}*\n
-⚠️ \`\`\`SI ESTE BOT ES CUENTA OFICIAL Y TIENE EVIDENCIA QUE RESPALDE QUE ESTE MENSAJE ES UN ERROR, PUEDE EXPONER SU CASO EN:\`\`\`
-👉 *${ig}*\n👉 wa.me/50660400020\n👉 wa.me/573026191480`)
+    m.reply(`🚫 *NO PUEDES USAR COMANDOS*\n
+📑 *MOTIVO: ESTAS BANEADO(A)*\n📑 *MOTIVO DEL BANEO: ${user.messageSpam === 0 ? 'NO ESPECIFICADO' : user.messageSpam}*
+⚠️ \`\`\`SI CREES QUE FUE UN ERROR HABLA CON UN ADMIN O CON MI CREADOR\`\`\`
+👉 *RobleUY (creador) *\n👉 wa.me/59893900470\n*SOLO ESCRIBIR POR TEMAS IMPORTANTES*`)
 user.antispam++	
 return
 }}
