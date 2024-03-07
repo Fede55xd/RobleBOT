@@ -3,7 +3,7 @@ let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender] ||{};
 
     
-    let profileInfo = `*Tu perfil de usuario*
+    let profileInfo = `*Información Personal*
 
 *―――――――――――――――――――*
 👤 *Usuario:* @${m.sender.split('@')[0]}
