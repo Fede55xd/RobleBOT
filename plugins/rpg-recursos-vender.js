@@ -15,11 +15,11 @@ let handler = async (m, { conn, command, args }) => {
     };
 
     let recursos = {
-        "madera": 15,
-        "piedra": 20,
-        "plata": 25,
-        "oro": 30,
-        "diamante": 40
+        "madera": 30,
+        "piedra": 40,
+        "plata": 50,
+        "oro": 60,
+        "diamante": 80
     };
 
     if (command === 'mvender' || command === 'sellresource') {
