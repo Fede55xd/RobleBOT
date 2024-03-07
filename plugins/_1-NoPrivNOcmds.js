@@ -5,6 +5,8 @@ const comandosPersonalizados = [
   "pescar",
   "llaves"
   "abrircaja",
+  "picoup",
+  "mvender",
   "aventura",
   "viajar",
   "talar",
