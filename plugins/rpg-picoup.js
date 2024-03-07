@@ -22,7 +22,7 @@ let handler = async (m, { conn, command, args }) => {
             let nivelActual = global.db.data.users[m.sender].pico || 0;
             let dineroFaltante = costoSubida - global.db.data.users[m.sender].money;
 
-            return m.reply(`🚫 *Saldo insuficiente.*\nDinero faltante: ${dineroFaltante`, null, { contextInfo: fkontak });
+            return m.reply(`🚫 *Saldo insuficiente.*\nDinero faltante: ${dineroFaltante}`, null, { contextInfo: fkontak });
         }
 
         global.db.data.users[m.sender].money -= costoSubida;
