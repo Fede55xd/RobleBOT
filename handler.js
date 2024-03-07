@@ -67,6 +67,13 @@ if (!('uprank' in user)) {
     };
 
 }
+// --------------
+if (!isNumber(user.pescados)) user.pescados = 0;
+if (!isNumber(user.llavecomun)) user.llavecomun = 0;
+if (!isNumber(user.llaverara)) user.llaverara = 0;
+if (!isNumber(user.llaveespecial)) user.llaveespecial = 0;
+if (!isNumber(user.llavecelestial)) user.llavecelestial = 0;
+// --------------
 if (!isNumber(user.pico)) user.pico = 1;
 if (!isNumber(user.rpgoro)) user.rpgoro = 1;
 if (!isNumber(user.ojos)) user.ojos = 0;
