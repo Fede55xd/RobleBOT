@@ -1,6 +1,9 @@
 let handler = async (m, { conn }) => {
     let user = global.db.data.users[m.sender];
 
+    // Paso 1: Agregar la propiedad pico si no existe
+    if (!user.pico) user.pico = 1;
+
     let timeDiff = new Date() - user.lastMine;
     let waitTime = 60000;
 
@@ -14,13 +17,26 @@ let handler = async (m, { conn }) => {
         { nombre: "piedra", rareza: 20, emoji: "🪨", min: 50, max: 100 },
     ];
 
-    let recursosConseguidos = `*@${m.sender.split('@')[0]} fuiste a minar y conseguiste:*\n`;
-    
+    let recursosConseguidos = `*@${m.sender.split('@')[0]} fuiste a minar con un pico de nivel ${user.pico} y conseguiste:*\n`;
+
+    // Paso 2 y 3: Calcular porcentaje de ganancia adicional y aplicarlo
     minerales.forEach(recursoAleatorio => {
         let cantidadAleatoria = Math.floor(Math.random() * (recursoAleatorio.max - recursoAleatorio.min + 1)) + recursoAleatorio.min;
+
+        // Calcular ganancia adicional basada en el nivel del pico
+        let gananciaAdicional = 0.05 * user.pico * cantidadAleatoria;
+
+        // Aplicar el porcentaje de ganancia adicional
+        cantidadAleatoria += gananciaAdicional;
+
+        // Paso 3: Agregar los recursos obtenidos al inventario del usuario
         user[`rpg${recursoAleatorio.nombre}`] += cantidadAleatoria;
-        recursosConseguidos += `+${cantidadAleatoria} ${recursoAleatorio.emoji} ${recursoAleatorio.nombre.charAt(0).toUpperCase() + recursoAleatorio.nombre.slice(1)}\n`;
+        
+        recursosConseguidos += `+${cantidadAleatoria.toFixed(2)} ${recursoAleatorio.emoji} ${recursoAleatorio.nombre.charAt(0).toUpperCase() + recursoAleatorio.nombre.slice(1)}\n`;
     });
+
+    // Paso 4: Actualizar el nivel del pico al final de la función
+    user.pico++;
 
     user.lastMine = new Date();
 
