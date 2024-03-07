@@ -24,21 +24,28 @@ let handler = async (m, { conn, command, args }) => {
 
     if (command === 'mvender' || command === 'sellresource') {
         let totalGanado = 0;
+        let mineralesParaVender = false;
 
         // Vender todos los minerales
         Object.keys(recursos).forEach(recurso => {
             let cantidadRecursos = global.db.data.users[m.sender]['rpg' + recurso];
             if (cantidadRecursos > 0) {
+                mineralesParaVender = true;
                 let valorVenta = recursos[recurso] * cantidadRecursos;
                 totalGanado += valorVenta;
                 global.db.data.users[m.sender]['rpg' + recurso] = 0;
             }
         });
 
+        // Si no hay minerales para vender, mostrar mensaje de error
+        if (!mineralesParaVender) {
+            return m.reply('🚫 *NO TIENES MINERALES PARA VENDER*', null, { contextInfo: fkontak });
+        }
+
         // Añadir las ganancias al balance del usuario
         global.db.data.users[m.sender].money += totalGanado;
 
-        return m.reply(`Vendiste todos tus minerales por un total de ${totalGanado} ROBLECOINS. 💰 Nuevo balance: ${global.db.data.users[m.sender].money} ROBLECOINS`, null, { contextInfo: null });
+        return m.reply(`Vendiste todos tus minerales por un total de ${totalGanado} Monedas. 💰 Nuevo balance: ${global.db.data.users[m.sender].money} ROBLECOINS`, null, { contextInfo: null });
     }
 }
 
