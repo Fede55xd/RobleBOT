@@ -14,7 +14,7 @@ let handler = async (m, { conn, args }) => {
     user.friends.push(mentionedJid);
     user.amigos = user.friends.length; // Actualiza el contador de amigos
 
-    let profileInfo = `*🤝 @${m.sender.split('@')[0]} ha agregado a @${mentionedJid.split('@')[0]} como amigo 🤝*`;
+    let profileInfo = `*🤝 @${m.sender.split('@')[0]} agregaste como amigo a @${mentionedJid.split('@')[0]} 🤝*`;
     await conn.reply(m.chat, profileInfo, m, m.mentionedJid ? { mentions: [m.sender, mentionedJid] } : {});
 }
 
