@@ -2,6 +2,9 @@ const comandosGenerales = /piedra|papel|tijera|estado|verificar|code|jadibot --c
 
 const comandosPersonalizados = [
   "darmedalla",
+  "pescar",
+  "llaves"
+  "abrircaja",
   "aventura",
   "viajar",
   "talar",
