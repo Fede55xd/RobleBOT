@@ -35,12 +35,12 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
     let ganancia = Math.random() < 0.6 ? apuesta : -apuesta;
     global.db.data.users[m.sender].money += ganancia;
 
-    let resultado = ganancia > 0 ? `La moneda cayó en cara y ganaste ${ganancia} Ahora tienes: ${global.db.data.users[m.sender].money} ROBLECOINS 🥳` : `La moneda cayó en cruz y perdiste ${-ganancia} Ahora tienes: ${global.db.data.users[m.sender].money} ROBLECOINS 😥`;
+    let resultado = ganancia > 0 ? `Desafiaste al azar y ganaste ${ganancia}, Ahora tienes: ${global.db.data.users[m.sender].money} monedas 🥳` : `Desafiaste al azar y perdiste ${-ganancia}, Ahora tienes: ${global.db.data.users[m.sender].money} monedas 😥`;
 
     // Actualizar tiempo de espera
     global.db.data.users[m.sender].wait = new Date();
 
-    return m.reply(`🎲 *${resultado}*`, null, { contextInfo: null });
+    return m.reply(`*${resultado}*`, null, { contextInfo: null });
 }
 
 handler.help = ['apostar (cantidad)', 'apostar all'];
