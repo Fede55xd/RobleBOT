@@ -67,6 +67,7 @@ if (!('uprank' in user)) {
     };
 
 }
+if (!isNumber(user.pico)) user.pico = 1;
 if (!isNumber(user.rpgoro)) user.rpgoro = 1;
 if (!isNumber(user.ojos)) user.ojos = 0;
 if (!isNumber(user.orejas)) user.orejas = 0;
