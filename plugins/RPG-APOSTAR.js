@@ -6,22 +6,12 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
     let elapsedTime = new Date() - new Date(lastApostarTime);
     let remainingTime = cooldown - elapsedTime;
 
-    let textos = `
-*🎲 APUESTA CON ROBLECOINS 🎲*
-
-PARA APOSTAR, USA EL COMANDO:
-${usedPrefix}apostar (cantidad)
-
-EJEMPLO: ${usedPrefix}apostar 100
-
-PARA APOSTAR TODO, USA:
-${usedPrefix}apostar all
-`;
+    let textos = `*💱 Te faltó agregar la cantidad a apostar.*\n_Ejemplos:_\n.apostar 100\n.apostar all (esto apuesta todo tu dinero)`;
 
     // Verificar tiempo de espera
     if (remainingTime > 0) {
         let waitTimeSeconds = Math.ceil(remainingTime / 1000);
-        return m.reply(`*🕓 ESPERA ${waitTimeSeconds} SEGUNDOS PARA JUGAR DE NUEVO*`, null, { contextInfo: fkontak });
+        return m.reply(`*🕓 Debes esperar ${waitTimeSeconds} segundos para apostar nuevamente.*`, null, { contextInfo: fkontak });
     }
 
     if (global.db.data.users[m.sender].money <= 0) {
