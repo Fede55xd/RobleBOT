@@ -45,7 +45,7 @@ let handler = async (m, { conn, command, args }) => {
         // Añadir las ganancias al balance del usuario
         global.db.data.users[m.sender].money += totalGanado;
 
-        return m.reply(`Vendiste todos tus minerales por un total de ${totalGanado} Monedas. 💰 Nuevo balance: ${global.db.data.users[m.sender].money} ROBLECOINS`, null, { contextInfo: null });
+        return m.reply(`Vendiste todos tus minerales por un total de ${totalGanado} Monedas. 💰 Nuevo balance: ${global.db.data.users[m.sender].money}`, null, { contextInfo: null });
     }
 }
 
