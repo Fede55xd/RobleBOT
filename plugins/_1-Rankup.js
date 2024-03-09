@@ -5,7 +5,7 @@ const rangos = [
 ];
 
 const precios = {
-    'Novato': 10, 'Aprendiz': 10000, 'Soldado': 25000, 'Cabo': 50000, 'Sargento': 75000, 'Teniente': 100000, 'Capitan': 115000, 'Comandante': 150000, 'Coronel': 180000, 'General': 220000, 'Mariscal': 280000, 'Vanguardia': 325000, 'Elite': 370000, 'Titan': 430000, 'Leyenda': 480000, 'Maestro': 525000, 'SemiDios': 600000, 'DIOS': 2000000
+    'Novato': 5000, 'Aprendiz': 10000, 'Soldado': 25000, 'Cabo': 50000, 'Sargento': 75000, 'Teniente': 100000, 'Capitan': 115000, 'Comandante': 150000, 'Coronel': 180000, 'General': 220000, 'Mariscal': 280000, 'Vanguardia': 325000, 'Elite': 370000, 'Titan': 430000, 'Leyenda': 480000, 'Maestro': 525000, 'SemiDios': 600000, 'DIOS': 2000000
 };
 
 function calcularPrecioRango(rangoActual) {
