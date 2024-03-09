@@ -22,9 +22,11 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
 
     const comando = command.toLowerCase(); 
 
-    if (!user.uprank.rango) {
-        user.uprank.rango = '	Novato';
-    }
+    if (!user.uprank) {
+    user.uprank = { rango: 'Novato' };
+} else if (!user.uprank.rango) {
+    user.uprank.rango = 'Novato';
+}
 
     if (comando === 'rankup') {
         let precio = calcularPrecioRango(user.uprank.rango);
