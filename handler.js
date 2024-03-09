@@ -62,7 +62,7 @@ if (!('uprank' in user)) {
 
     user.uprank = {
 
-        rango: 'BRONCE I', // Rango predeterminado si no existe en la base de datos
+        rango: 'Novato', // Rango predeterminado si no existe en la base de datos
 
     };
 
