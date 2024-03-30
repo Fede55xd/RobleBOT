@@ -1,55 +1,43 @@
-let handler = async (m, { conn, command, args }) => {
-    let fkontak = {
-        "key": {
-            "participants": "0@s.whatsapp.net",
-            "remoteJid": "status@broadcast",
-            "fromMe": false,
-            "id": "Halo"
-        },
-        "message": {
-            "contactMessage": {
-                "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${(m.sender || '').split('@')[0]}:${(m.sender || '').split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-            }
-        },
-        "participant": "0@s.whatsapp.net"
-    };
+let handler = async (m, { conn }) => {
+  let user = global.db.data.users[m.sender];
 
-    let recursos = {
-        "madera": 30,
-        "piedra": 40,
-        "plata": 50,
-        "oro": 60,
-        "diamante": 80
-    };
+  // Verificar y asignar propiedades a 0 si no existen
+  user.rpgpiedra = user.rpgpiedra || 0;
+  user.rpgplata = user.rpgplata || 0;
+  user.rpgoro = user.rpgoro || 0;
+  user.rpgdiamante = user.rpgdiamante || 0;
 
-    if (command === 'mvender' || command === 'sellresource') {
-        let totalGanado = 0;
-        let mineralesParaVender = false;
+  let precioPiedra = 5;
+  let precioPlata = 8;
+  let precioOro = 12;
+  let precioDiamante = 15;
 
-        // Vender todos los minerales
-        Object.keys(recursos).forEach(recurso => {
-            let cantidadRecursos = global.db.data.users[m.sender]['rpg' + recurso];
-            if (cantidadRecursos > 0) {
-                mineralesParaVender = true;
-                let valorVenta = recursos[recurso] * cantidadRecursos;
-                totalGanado += valorVenta;
-                global.db.data.users[m.sender]['rpg' + recurso] = 0;
-            }
-        });
+  let totalPiedra = user.rpgpiedra;
+  let totalPlata = user.rpgplata;
+  let totalOro = user.rpgoro;
+  let totalDiamante = user.rpgdiamante;
 
-        // Si no hay minerales para vender, mostrar mensaje de error
-        if (!mineralesParaVender) {
-            return m.reply('🚫 *NO TIENES MINERALES PARA VENDER*', null, { contextInfo: fkontak });
-        }
+  let totalMinerales = totalPiedra + totalPlata + totalOro + totalDiamante;
 
-        // Añadir las ganancias al balance del usuario
-        global.db.data.users[m.sender].money += totalGanado;
+  // Verificar si hay minerales para vender
+  if (totalMinerales === 0) {
+      return await conn.reply(m.chat, `*@${m.sender.split('@')[0]} no tienes minerales para vender* ❌`, m, m.mentionedJid ? { mentions: [m.sender, m.mentionedJid] } : {});
+  }
 
-        return m.reply(`Vendiste todos tus minerales por un total de ${totalGanado} Monedas. 💰 Nuevo balance: ${global.db.data.users[m.sender].money}`, null, { contextInfo: null });
-    }
+  let totalMonedas = totalPiedra * precioPiedra + totalPlata * precioPlata + totalOro * precioOro + totalDiamante * precioDiamante;
+
+  user.money += totalMonedas;
+
+  // Reiniciar las propiedades de los minerales a 0
+  user.rpgpiedra = 0;
+  user.rpgplata = 0;
+  user.rpgoro = 0;
+  user.rpgdiamante = 0;
+
+  return await conn.reply(m.chat, `*@${m.sender.split('@')[0]} vendiste un total de ${totalMinerales} minerales y obtuviste ${totalMonedas} monedas* 🪙`, m, m.mentionedJid ? { mentions: [m.sender, m.mentionedJid] } : {});
 }
 
 handler.help = ['mvender'];
-handler.tags = ['games'];
-handler.command = /^(mvender|sellresource)$/i;
+handler.tags = ['economy'];
+handler.command = /^(mvender)$/i;
 export default handler;
