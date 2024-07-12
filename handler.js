@@ -67,6 +67,25 @@ if (!('uprank' in user)) {
     };
 
 }
+    if (!('alianzas' in user)) {
+        user.alianzas = {
+            nombre: 'Sin Alianza', // nombre de alianza predeterminado si no existe en la base de datos
+            miembros: [], // lista de miembros de la alianza
+            saldo: { // recursos de la alianza
+                dinero: 0,
+            }
+        };
+    }
+
+
+// --------------
+if (!isNumber(user.salud)) user.salud = 100;
+if (!isNumber(user.kills)) user.kills = 0;
+if (!isNumber(user.muertes)) user.muertes = 0;
+// --------------
+if (!isNumber(user.pescados)) user.kilometros = 0;
+if (!isNumber(user.pescados)) user.nafta = 0;
+if (!isNumber(user.pescados)) user.rol = 0;
 // --------------
 if (!isNumber(user.pescados)) user.pescados = 0;
 if (!isNumber(user.llavecomun)) user.llavecomun = 0;
@@ -74,7 +93,8 @@ if (!isNumber(user.llaverara)) user.llaverara = 0;
 if (!isNumber(user.llaveespecial)) user.llaveespecial = 0;
 if (!isNumber(user.llavecelestial)) user.llavecelestial = 0;
 // --------------
-if (!isNumber(user.pico)) user.pico = 1;
+if (!isNumber(user.casas)) user.casas = 0;
+if (!isNumber(user.casas)) user.empleados = 0;
 if (!isNumber(user.rpgoro)) user.rpgoro = 1;
 if (!isNumber(user.ojos)) user.ojos = 0;
 if (!isNumber(user.orejas)) user.orejas = 0;
@@ -140,7 +160,11 @@ if (!('pet' in user)) {
         lastFed: new Date(), // Momento de la última alimentación
     };
 }
-	
+    if (!('apodo' in user)) {
+        user.apodo = {
+            name: '',           // Nombre 
+        };
+    }
 if (!user.registered) {
 if (!('name' in user)) user.name = m.name
 if (!('age' in user)) user.age = m.age
