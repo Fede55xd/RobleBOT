@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
     let waitTime = 86400000; // 24 horas en milisegundos
 
     if (timeDiff < waitTime)
-        return m.reply(`*⏰ DEBES ESPERAR ${Math.ceil((waitTime - timeDiff) / 1000)} SEGUNDOS ANTES DE USAR "CADA DÍA" NUEVAMENTE.*\n*ℹ️ Veces utilizadas: ${user.cadadiaCount}*`, null, { contextInfo: null });
+        return m.reply(`*🤠 Ya has reclamado esta recompensa.* 😁`, null, { contextInfo: null });
 
     let coinsClaimed = 20000; 
 
@@ -15,9 +15,7 @@ let handler = async (m, { conn }) => {
     user.lastCadadia = currentTime;
     user.cadadiaCount = user.cadadiaCount ? user.cadadiaCount + 1 : 1; // Contador de veces utilizadas
 
-    let cadadiaMessage = `*Has reclamado tu recompensa diaria de 20000 monedas exitosamente. 💰*
-
-*💰 BALANCE ACTUALIZADO:*\n*${user.money} ROBLECOINS*`;
+    let cadadiaMessage = `*Has reclamado tu recompensa diaria de 20000 monedas exitosamente. 💰*`;
 
     return m.reply(cadadiaMessage, null, { contextInfo: null });
 }

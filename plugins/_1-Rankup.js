@@ -1,11 +1,11 @@
 import { Buffer } from 'buffer';
 
 const rangos = [
-    'Novato', 'Aprendiz', 'Soldado', 'Cabo', 'Sargento', 'Teniente', 'Capitan', 'Comandante', 'Coronel', 'General', 'Mariscal', 'Vanguardia', 'Elite', 'Titan', 'Leyenda', 'Maestro', 'SemiDios', 'DIOS'
+    'Novato', 'Aprendiz', 'Soldado', 'Cabo', 'Sargento', 'Teniente', 'Capitan', 'Comandante', 'Coronel', 'General', 'Mariscal', 'Vanguardia', 'Elite', 'Titan', 'Leyenda', 'Maestro', 'SemiDios', 'DIOS', 'RobleBOSS',
 ];
 
 const precios = {
-    'Novato': 5000, 'Aprendiz': 10000, 'Soldado': 25000, 'Cabo': 50000, 'Sargento': 75000, 'Teniente': 100000, 'Capitan': 115000, 'Comandante': 150000, 'Coronel': 180000, 'General': 220000, 'Mariscal': 280000, 'Vanguardia': '325000', 'Elite': 370000, 'Titan': 430000, 'Leyenda': 480000, 'Maestro': 525000, 'SemiDios': 600000, 'DIOS': 2000000
+    'Novato': 100000, 'Aprendiz': 200000, 'Soldado': 400000, 'Cabo': 800000, 'Sargento': 1600000, 'Teniente': 3200000, 'Capitan': 8000000, 'Comandante': 16000000, 'Coronel': 32000000, 'General': 64000000, 'Mariscal': 100000000, 'Vanguardia': 200000000, 'Elite': 400000000, 'Titan': 800000000, 'Leyenda': 1000000000, 'Maestro': 2000000000, 'SemiDios': 10000000000, 'DIOS': 50000000000, 'RobleBOSS': 100000000000
 };
 
 function calcularPrecioRango(rangoActual) {
@@ -31,7 +31,7 @@ let handler = async (m, { conn, text, command, usedPrefix, args }) => {
     if (comando === 'rankup') {
         let precio = calcularPrecioRango(user.uprank.rango);
 
-        if (user.uprank.rango === 'DIOS') {
+        if (user.uprank.rango === 'RobleBOSS') {
             let mensajeMaximo = `*Hey @${m.sender.split('@')[0]}, 🌟 ¡Felicidades! Ya has alcanzado el rango máximo, no hay más rangos para subir.*`;
             return conn.reply(m.chat, mensajeMaximo, m, m.mentionedJid ? { mentions: [m.sender, m.mentionedJid] } : {});
         }

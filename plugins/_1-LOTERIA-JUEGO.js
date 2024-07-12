@@ -74,7 +74,7 @@ function calculateWinnings(chosenNumbers, drawnNumbers) {
     return -100; 
 }
 
-handler.help = ['loteria', 'loto', '5deoro'];
+handler.help = ['loteria', 'loterìa', 'loto', '5deoro'];
 handler.tags = ['juego', 'loteria'];
 handler.command = /^(loteria|loto|5deoro)$/i;
 

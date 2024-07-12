@@ -6,7 +6,7 @@
 //
 import axios from "axios"
 let handler = async (m, { args }) => {
-if (!args[0]) throw "*Debes escribir el nombre de la ciudad o país para usar este comando.*/n_Ejemplo:_\n.clima Montevideo Uruguay\n.clima Paris Francia"
+if (!args[0]) throw "*Debes escribir el nombre de la ciudad o país para usar este comando.*\n_Ejemplo:_\n.clima Montevideo Uruguay\n.clima Paris Francia"
 try {
 const response = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273`)
 const res = await response

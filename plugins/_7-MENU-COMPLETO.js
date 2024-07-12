@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
     
 
 
-    let herramientas = `𝐑𝐨𝐛𝐥𝐞𝐁𝐎𝐓  • _*Menú completo*_ ☘️
+    let herramientas = `𝐑𝐨𝐛𝐥𝐞𝐁𝐎𝐓  • _*Menú*_ ☘️
 *Hola @${m.sender.split('@')[0]},*
 _Aquí tienes la lista de comandos._
 ┌───────────────────┐
@@ -31,13 +31,8 @@ _Aquí tienes la lista de comandos._
 ➜ _.audio_ [ *titulo o link* ]
 └───────────────────┘
 ┌───────────────────┐
-🤳 *DESCARGAR APPS*     📱
-➜ _.apk_ [ *nombre* ]
-└───────────────────┘
-┌───────────────────┐
 🎴 *CREAR STICKERS*     🍭
-➜ _.s | .sticker
-➜ _.attp_ [ *texto* ]
+➜ _.s | .sticker_
 ➜ _.emojimix_ [ *emoji+emoji* ]
 └───────────────────┘
 ┌───────────────────┐
@@ -74,15 +69,11 @@ _Aquí tienes la lista de comandos._
 ➜ _.bard_ [ *texto* ] (Ia Bard)  
 └───────────────────┘
 ┌───────────────────┐
-🚀 * 👇ENTRETENIMIENTO 👇* 
+🚀 *👇 ENTRETENIMIENTO 👇* 
 └───────────────────┘
 ┌───────────────────┐
 🏁 *JUEGOS DE CARRERAS*   🏁
-➜ _.cmotos_
-➜ _.cautos_
-➜ _.ccaballos_
-➜ _.cbicis_
-➜ _.cpersonas_
+➜ _.carreras_
 └───────────────────┘
 ┌───────────────────┐
 🏋️‍♂️ *JUEGOS DE DEPORTES* 🏃‍♀️
@@ -113,7 +104,7 @@ _Aquí tienes la lista de comandos._
 ➜ _.calcular3_ [ *nombre o @usuario* ] (num.)
 └───────────────────┘
 ┌───────────────────┐
-🎢 * 👇FUNCIONES RPG 👇*    
+🎢 *👇 FUNCIONES RPG 👇*    
 └───────────────────┘
 ┌───────────────────┐
 👥 *COMANDOS DE ROL*    💭
@@ -145,13 +136,7 @@ _decir algo a alguien específico 👇_
 ┌───────────────────┐
 🚨 *CRÍMENES*           🃏
 ➜ _.crimen | .crime_ 
-➜ _.hackearcoins_ [ *@usuario*  ]
-➜ _.hackearcriptos_ [ *@usuario* ]
-└───────────────────┘
-┌───────────────────┐
-👩‍💻 *CRIPTOMONEDAS*   🪙
-➜ _.comprarcriptos_ [ *cantidad* ]
-➜ _.vendercriptos_ [ *cantidad | all* ]
+➜ _.robar_ [ *@usuario*  ]
 └───────────────────┘
 ┌───────────────────┐
 🪨 *RECURSOS*           🪵
@@ -173,9 +158,9 @@ _decir algo a alguien específico 👇_
     await conn.reply(m.chat, herramientas, m, m.mentionedJid ? { mentions: [m.sender, m.mentionedJid] } : {});
 }
 
-handler.help = ['menuall', 'allmenu'];
+handler.help = ['menu', 'menú'];
 handler.tags = ['menu'];
-handler.command = /^(allmenu|allmenú)$/i;
+handler.command = /^(mesnu|msenú|helsp|ayusda)$/i;
 export default handler;
 
 const more = String.fromCharCode(8206)

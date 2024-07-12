@@ -85,6 +85,32 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
       );
   }
   // ------------------------
+     if (command == "disparar") {
+          const balasTotales = 6;
+          const probabilidadImpacto = 0.6; 
+
+          let balasImpactadas = 0;
+          for (let i = 0; i < balasTotales; i++) {
+              if (Math.random() < probabilidadImpacto) {
+                  balasImpactadas++;
+              }
+          }
+
+          const balasErradas = balasTotales - balasImpactadas;
+
+          const mensaje =
+              `*¡Disparaste 6 balas a ${text}!* 🎯\n\n` +
+              `Balas impactadas: ${balasImpactadas}\n` +
+              `Balas erradas: ${balasErradas}\n\n` +
+              `💥💥💥💥💥💥`;
+
+          await conn.reply(
+              m.chat,
+              mensaje,
+              m,
+              m.mentionedJid ? { mentions: [m.sender, m.mentionedJid] } : {}
+          );
+      }
 
   if (command == "linda") {
       let juego =
@@ -99,8 +125,16 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
   }
 
   // ---------------
+    if (command == "encestar") {
+        let juego = `*@${m.sender.split('@')[0]} encestó una canasta en ${text}!* 🏀💥\n\n` +
+                    `¡Un increíble ${(Math.random() * 100).toFixed(0)}% de aciertos!`;
+        await conn.reply(m.chat, juego, m, m.mentionedJid ? { mentions: [m.sender, m.mentionedJid] } : {});
+    }
+
 };
 handler.help = [
+  "disparar",
+  "encestar",
   "calcular",
   "calcular2",
   "calcular3",
@@ -111,6 +145,6 @@ handler.help = [
 ].map((v) => v + " @tag | nombre");
 handler.tags = ["calculator"];
 handler.command =
-  /^love|calcular|calcular2|calcular3|besar|lindo|linda/i;
+  /^love|encestar|calcular|calcular2|calcular3|besar|lindo|disparar|linda/i;
 handler.exp = 0;
 export default handler;
